@@ -63,26 +63,36 @@ bool Commande::modifier()
 QSqlQueryModel *Commande::rechercher_commande(const QString &id)
 {
     QSqlQueryModel *model=new QSqlQueryModel();
-   model->setQuery("select * from Commande where(CodeC LIKE '"+id+"')");
+   model->setQuery("select * from Commande where(IDCLIENT LIKE '"+id+"')");
    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Type"));
    model->setHeaderData(1, Qt::Horizontal, QObject::tr("CodeC"));
    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date"));
    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Prix"));
-   model->setHeaderData(3, Qt::Horizontal, QObject::tr("ID"));
+   model->setHeaderData(3, Qt::Horizontal, QObject::tr("IDCLIENT"));
     return model;
 }
 
 QSqlQueryModel *Commande::afficher_commande_trier()
 {
     QSqlQueryModel *model=new QSqlQueryModel();
-    model->setQuery("select *from Commande ORDER BY ID");
+    model->setQuery("select *from Commande ORDER BY IDCLIENT");
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Type"));
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("CodeC"));
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Date"));
     model->setHeaderData(0,Qt::Horizontal,QObject::tr("Prix"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("ID"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("IDCLIENT"));
     return model;
 }
-
+void Commande::statistique(QVector<double>* ticks,QVector<QString> *labels)
+{   QSqlQuery q;
+    int i=0;
+    q.exec("select Prix from Commande");
+    while (q.next()) {
+        QString refer = q.value(0).toString();
+        i++;
+        *ticks<<i;
+        *labels <<refer;
+}
+}
 
 

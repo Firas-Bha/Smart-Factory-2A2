@@ -17,6 +17,7 @@ public:
     int getID(){return ID;}
     QSqlQueryModel * afficher_commande_trier();
     QSqlQueryModel * rechercher_commande(const QString &id);
+    void statistique(QVector<double>* ticks,QVector<QString> *labels);
     bool ajouter();
     QSqlQueryModel * afficher();
     bool supprimer(int);

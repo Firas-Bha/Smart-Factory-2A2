@@ -34,11 +34,11 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Gestion Client</string>
+        <string>Gerer Client</string>
        </attribute>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -189,19 +189,6 @@
           <width>421</width>
           <height>171</height>
          </rect>
-        </property>
-       </widget>
-       <widget class="QRadioButton" name="radioButton_5">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>270</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Exporter en pdf</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_19">
@@ -397,7 +384,7 @@
        <widget class="QPushButton" name="pushButton">
         <property name="geometry">
          <rect>
-          <x>450</x>
+          <x>560</x>
           <y>200</y>
           <width>93</width>
           <height>28</height>
@@ -410,8 +397,8 @@
        <widget class="QLineEdit" name="lineEdit_ID_4">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>200</y>
+          <x>430</x>
+          <y>220</y>
           <width>113</width>
           <height>22</height>
          </rect>
@@ -420,8 +407,8 @@
        <widget class="QLabel" name="label_30">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>200</y>
+          <x>370</x>
+          <y>220</y>
           <width>56</width>
           <height>16</height>
          </rect>
@@ -433,8 +420,8 @@
        <widget class="QPushButton" name="pushButton_3">
         <property name="geometry">
          <rect>
-          <x>450</x>
-          <y>240</y>
+          <x>560</x>
+          <y>230</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -443,10 +430,23 @@
          <string>Trier</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>270</y>
+          <width>121</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Exporter en PDF</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Gestion Commandes</string>
+        <string>Gerer Commandes</string>
        </attribute>
        <widget class="QLabel" name="label_7">
         <property name="geometry">
@@ -560,7 +560,7 @@
         <property name="geometry">
          <rect>
           <x>540</x>
-          <y>270</y>
+          <y>250</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -703,19 +703,6 @@
          <string>Supprimer</string>
         </property>
        </widget>
-       <widget class="QRadioButton" name="radioButton_6">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>240</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Exporter en pdf </string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_18">
         <property name="geometry">
          <rect>
@@ -727,19 +714,6 @@
         </property>
         <property name="text">
          <string>Afficher Commande:</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_9">
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>240</y>
-          <width>131</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Affichage statistique</string>
         </property>
        </widget>
        <widget class="QDateTimeEdit" name="dateTimeEdit">
@@ -773,7 +747,7 @@
         <property name="geometry">
          <rect>
           <x>540</x>
-          <y>210</y>
+          <y>220</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -901,7 +875,7 @@
        <widget class="QLabel" name="label_31">
         <property name="geometry">
          <rect>
-          <x>360</x>
+          <x>320</x>
           <y>240</y>
           <width>101</width>
           <height>20</height>
@@ -909,6 +883,34 @@
         </property>
         <property name="text">
          <string>IDClient</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_12">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>240</y>
+          <width>131</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Exporter en PDF</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Statistiques</string>
+       </attribute>
+       <widget class="QCustomPlot" name="plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>-1</x>
+          <y>-1</y>
+          <width>751</width>
+          <height>501</height>
+         </rect>
         </property>
        </widget>
       </widget>
@@ -928,6 +930,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

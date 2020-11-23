@@ -88,3 +88,4 @@ QSqlQueryModel *Client::afficher_client_trier()
     return model;
 }
 
+
