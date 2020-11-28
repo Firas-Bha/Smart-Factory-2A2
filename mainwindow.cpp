@@ -370,13 +370,13 @@ void MainWindow::on_pushButton_12_clicked()
                      QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
                      if (dialog->exec() == QDialog::Accepted) {
 
-                        /* QLabel lab;
-                          QPixmap pixmap("D:/care++.png");
+                        QLabel lab;
+                          QPixmap pixmap("D:/IFACTORY.png");
                          lab.setPixmap(pixmap);
                          QPainter painter(&lab);
                          QPrinter printer(QPrinter::PrinterResolution);
 
-    */
+
                          document->print(&printer);
 
                      }
