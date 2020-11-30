@@ -41,6 +41,10 @@ private slots:
 
     void on_radioButton_Nom_clicked();
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_12_clicked();
+
 private:
     Ui::MainWindow *ui;
     Produit tempProduit;

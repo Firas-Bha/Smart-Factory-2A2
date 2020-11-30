@@ -18,6 +18,7 @@ public:
     bool modifier( int ,QString);
     QSqlQueryModel*trier_NomAscendant();
     QSqlQueryModel *trier_NomDescendant();
+    QSqlQueryModel *trier_IDSTOCK();
 
 private:
 

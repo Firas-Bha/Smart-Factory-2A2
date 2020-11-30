@@ -41,10 +41,9 @@ bool Stock::supprimer(int ide)
 bool Stock::modifier( int id_Stock,QString Nom)
 {
     QSqlQuery query;
-
     QString res=QString::number(id_Stock);
-    query.prepare("UPDATE produit SET  ID = :ids, nom = :nom_Produit, prix=:pr,Stock=:NomStock ");
-    query.bindValue(":id", res);
+    query.prepare("UPDATE stock SET  Id = :res, nom = :Nom ");
+    query.bindValue(":res", res);
     query.bindValue(":Nom", Nom);
     return  query.exec();
 }
@@ -60,9 +59,20 @@ QSqlQueryModel * Stock::trier_NomAscendant()
 QSqlQueryModel * Stock::trier_NomDescendant()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("SELECT * FROM PRRODUIT ORDER BY NOM DESC");
+    model->setQuery("SELECT * FROM STOCK ORDER BY NOM DESC");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Nom"));
+    return model;
+}
+QSqlQueryModel * Stock::trier_IDSTOCK()
+{
+
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM STOCK ORDER BY ID ASC ");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRIX"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("NomStock"));
     return model;
 }
 

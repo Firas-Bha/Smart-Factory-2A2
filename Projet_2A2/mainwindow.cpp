@@ -109,9 +109,24 @@ void MainWindow::on_pushButton_Produit_clicked()
 }
 void MainWindow::on_pushButton_7_clicked()
 {
-            int id=ui->lineEdit_IDD->text().toInt();
+    if(ui->radioButton_NOMRP->isChecked())
+    {   int id=ui->lineEdit_IDD->text().toInt();
+        ui->tableView_Produit->setModel(tempProduit.chercher_ID(id));
+    }
 
-            ui->tableView_Produit->setModel(tempProduit.chercher_ID(id));
+    // if(ui->radioButton_2_Prix->isChecked())
+    // {
+    //  ui->tableView_Produit->setModel(tempProduit.trier_Prix());
+    // }
+
+    // if(ui->radioButton_ID1->isChecked())
+     //{
+     //  ui->tableView_Produit->setModel(tempProduit.trier_ID());
+    // }
+
+           // int id=ui->lineEdit_IDD->text().toInt();
+
+           // ui->tableView_Produit->setModel(tempProduit.chercher_ID(id));
 
 
             // QString nom=ui->lineEdit_Nomm->text();
@@ -305,3 +320,42 @@ void MainWindow::on_pushButton_14_clicked()
 
 
 
+
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    int  id_stock=ui->lineEdit_idStock->text().toInt();
+    QString nom_stock=ui->lineEdit_NomStock_2->text();
+    bool test=tempStock.modifier(id_stock,nom_stock);
+    if (test)
+    {     ui->tableView_AffichageStock->setModel(tempStock.afficherStock());
+        QMessageBox::information(nullptr, QObject::tr("Modification"),
+                    QObject::tr("Modification avec succès.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    else
+    {
+        QMessageBox::information(nullptr, QObject::tr("Modification"),
+                    QObject::tr("Modification echoué.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+}
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    if(ui->radioButton_NOMASC->isChecked())
+    {
+        ui->tableView_AffichageStock->setModel(tempStock.trier_NomAscendant());
+    }
+
+    if(ui->radioButton_NOMDESC->isChecked())
+    {
+     ui->tableView_AffichageStock->setModel(tempStock.trier_NomDescendant());
+    }
+
+    if(ui->radioButton_IDS->isChecked())
+    {
+      ui->tableView_AffichageStock->setModel(tempStock.trier_IDSTOCK());
+    }
+}
