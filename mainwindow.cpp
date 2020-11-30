@@ -417,15 +417,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
               QVector<QString> labels;
               tmpCommande.statistique(&ticks,&labels);
 
-              /*QSqlQuery q;
-              int i=0;
-              q.exec("select reference from medicament");
-              while (q.next()) {
-                  QString refer = q.value(0).toString();
-                  i++;
-                  ticks<<i;
-                  labels <<refer;
-              }*/
+
 
               QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
               textTicker->addTicks(ticks, labels);

@@ -86,7 +86,7 @@ QSqlQueryModel *Commande::afficher_commande_trier()
 void Commande::statistique(QVector<double>* ticks,QVector<QString> *labels)
 {   QSqlQuery q;
     int i=0;
-    q.exec("select Prix from Commande");
+    q.exec("select Type from Commande");
     while (q.next()) {
         QString refer = q.value(0).toString();
         i++;
