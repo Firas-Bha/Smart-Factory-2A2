@@ -13,6 +13,7 @@
 #include <QTextStream>
 #include <QPainter>
 #include <QTextStream>
+#include <QSound>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->lineEdit_Prix->setValidator(new QIntValidator(0,9999,this));
     ui->lineEdit_Prix_2->setValidator(new QIntValidator(0,9999,this));
+    son=new QSound("C:/Users/HP/Documents/Gestionvents/aa.wav");
 }
 
 
@@ -46,13 +48,14 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::on_pushButton_Ajouter_clicked()
-{
+{son->play();
     int id=ui->lineEdit_ID->text().toInt();
     QString nom=ui->lineEdit_Nom->text();
     QString prenom=ui->lineEdit_Prenom->text();
     int tel=ui->lineEdit_Tel->text().toInt();
     QString adresse=ui->lineEdit_Adresse->text();
     Client c(id,nom,prenom,tel,adresse);
+
     bool test=c.ajouter();
     if(test)
     {
@@ -64,8 +67,9 @@ void MainWindow::on_pushButton_Ajouter_clicked()
 }
 
 void MainWindow::on_pushButton_5_clicked()
-{
+{son->play();
     int id=ui->lineEdit_Supprimer->text().toInt();
+
     bool test=tmpClient.supprimer(id);
     if(test)
     {
@@ -76,7 +80,7 @@ void MainWindow::on_pushButton_5_clicked()
 }
 
 void MainWindow::on_pushButton_2_clicked()
-{
+{son->play();
 
 
         int id = ui->lineEdit_ID2->text().toInt();
@@ -107,7 +111,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 
 void MainWindow::on_pushButton_4_clicked()
-{
+{son->play();
     int ID=ui->lineEdit_ID_2->text().toInt();
     QString Type=ui->lineEdit_Type->text();
         int CodeC=ui->lineEdit_Commande->text().toInt();
@@ -115,6 +119,7 @@ void MainWindow::on_pushButton_4_clicked()
 
     int Prix=ui->lineEdit_Prix->text().toInt();
     Commande c(Type,CodeC,Date,Prix,ID);
+
     bool test=c.ajouter();
     if(test)
     {
@@ -127,8 +132,9 @@ void MainWindow::on_pushButton_4_clicked()
 
 
 void MainWindow::on_pushButton_8_clicked()
-{
+{son->play();
     int CodeC=ui->lineEdit_supprimer->text().toInt();
+
     bool test=tmpCommande.supprimer(CodeC);
     if(test)
     {
@@ -141,7 +147,7 @@ void MainWindow::on_pushButton_8_clicked()
 
 
 void MainWindow::on_pushButton_7_clicked()
-{
+{son->play();
     int ID = ui->lineEdit_ID_3->text().toInt();
     QString Type= ui->lineEdit_Type_2->text();
     QString Date= ui->dateTimeEdit_2->text();
@@ -149,6 +155,7 @@ void MainWindow::on_pushButton_7_clicked()
     int Prix = ui->lineEdit_Prix_2->text().toInt();
 
     Commande c(Type,CodeC,Date,Prix,ID);
+
   bool test=c.modifier();
   if(test)
 {
@@ -166,7 +173,7 @@ QMessageBox::information(nullptr, QObject::tr("modifier une commande"),
 
 void MainWindow::on_pushButton_clicked()
 {
-
+son->play();
 
         QString id = ui->lineEdit_ID_4->text();
         ui->TableView_Client->setModel(tmpClient.rechercher_client(id));
@@ -177,7 +184,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
 
-
+ son->play();
         ui->TableView_Client->setModel(tmpClient.afficher_client_trier());
 
 
@@ -186,17 +193,20 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_10_clicked()
 {
+    son->play();
     QString id = ui->lineEdit_Commande_3->text();
     ui->tableView_Commande->setModel(tmpCommande.rechercher_commande(id));
 }
 
 void MainWindow::on_pushButton_6_clicked()
 {
+   son->play();
     ui->tableView_Commande->setModel(tmpCommande.afficher_commande_trier());
 }
 
 void MainWindow::on_pushButton_11_clicked()
 {
+    son->play();
     QSqlDatabase db;
                     QTableView TableView_Client;
                     QSqlQueryModel * Modal=new  QSqlQueryModel();
@@ -251,7 +261,7 @@ void MainWindow::on_pushButton_11_clicked()
                      out <<  "</table>\n"
                              "<br><br>"
 
-                             "<p align='center'> <img src='D:/care++.png' alt='care++logo'></p>"
+                             "<p align='center'> <img src='D:/IFACTORY.png' alt='IFACTORYlogo'></p>"
 
                           <<"<br>"
                              <<"<table border=1 cellspacing=0 cellpadding=2 >\n";
@@ -272,13 +282,13 @@ void MainWindow::on_pushButton_11_clicked()
                      QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
                      if (dialog->exec() == QDialog::Accepted) {
 
-                        /* QLabel lab;
-                          QPixmap pixmap("D:/care++.png");
+                         QLabel lab;
+                          QPixmap pixmap("D:/IFACTORY.png");
                          lab.setPixmap(pixmap);
                          QPainter painter(&lab);
                          QPrinter printer(QPrinter::PrinterResolution);
 
-    */
+
                          document->print(&printer);
 
                      }
@@ -295,6 +305,7 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::on_pushButton_12_clicked()
 {
+     son->play();
     QSqlDatabase db;
                     QTableView TableView_Commande;
                     QSqlQueryModel * Modal=new  QSqlQueryModel();
@@ -349,7 +360,7 @@ void MainWindow::on_pushButton_12_clicked()
                      out <<  "</table>\n"
                              "<br><br>"
 
-                             "<p align='center'> <img src='D:/care++.png' alt='care++logo'></p>"
+                             "<p align='center'> <img src='D:/IFACTORY.png' alt='IFACTORYlogo'></p>"
 
                           <<"<br>"
                              <<"<table border=1 cellspacing=0 cellpadding=2 >\n";
@@ -383,7 +394,7 @@ void MainWindow::on_pushButton_12_clicked()
 
                      printer.setOutputFormat(QPrinter::PdfFormat);
                      printer.setPaperSize(QPrinter::A4);
-                     printer.setOutputFileName("/tmp/Clients.pdf");
+                     printer.setOutputFileName("/tmp/Commandes.pdf");
                      printer.setPageMargins(QMarginsF(15, 15, 15, 15));
 
 
@@ -466,4 +477,18 @@ void MainWindow::on_tabWidget_currentChanged(int index)
               ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 
 
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+     son->play();
+    ui->TableView_Client->setModel(tmpClient.afficher());
+}
+
+
+
+void MainWindow::on_pushButton_13_clicked()
+{
+   son->play();
+   ui->tableView_Commande->setModel(tmpCommande.afficher());
 }

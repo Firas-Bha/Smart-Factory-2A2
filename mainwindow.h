@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSound>
 #include "client.h"
 #include "commande.h"
 QT_BEGIN_NAMESPACE
@@ -43,8 +44,13 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_13_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QSound *son;
     Client tmpClient;
     Commande tmpCommande;
 };
