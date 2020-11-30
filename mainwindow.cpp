@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->lineEdit_Prix->setValidator(new QIntValidator(0,9999,this));
     ui->lineEdit_Prix_2->setValidator(new QIntValidator(0,9999,this));
-    son=new QSound("C:/Users/HP/Documents/Gestionvents/aa.wav");
+    son=new QSound("C:/Users/HP/Documents/Gestionvents/Click.wav");
 }
 
 
