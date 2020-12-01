@@ -3,7 +3,7 @@
 #include "machines.h"
 #include "interventions.h"
 #include <QMainWindow>
-
+#include<QSound>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -49,6 +49,7 @@ private slots:
     void on_tabWidget_10_currentChanged(int index);
 
 private:
+    QSound *son;
     Ui::MainWindow *ui;
     machines tempmachine;
     interventions tempinterv;

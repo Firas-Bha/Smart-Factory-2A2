@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 255, 0, 69), stop:0.375 rgba(255, 255, 0, 69), stop:0.423533 rgba(251, 255, 0, 145), stop:0.45 rgba(247, 255, 0, 208), stop:0.477581 rgba(255, 244, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.55 rgba(255, 255, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(255, 255, 0, 69), stop:1 rgba(255, 255, 0, 69));</string>
     </property>
     <property name="currentIndex">
      <number>1</number>
@@ -36,8 +36,8 @@
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>210</y>
+        <x>0</x>
+        <y>220</y>
         <width>1201</width>
         <height>451</height>
        </rect>
@@ -136,8 +136,8 @@
       <widget class="QTableView" name="tableView_machine">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>30</y>
+         <x>80</x>
+         <y>20</y>
          <width>721</width>
          <height>301</height>
         </rect>
@@ -180,7 +180,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="ajout">
        <attribute name="title">
@@ -552,6 +552,22 @@
        </widget>
       </widget>
      </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>840</x>
+        <y>0</y>
+        <width>381</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../IFACTORY.png</pixmap>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
@@ -560,14 +576,14 @@
      <widget class="QTabWidget" name="tabWidget_10">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>-10</x>
         <y>0</y>
         <width>1221</width>
         <height>211</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabWidget_10Page1">
        <attribute name="title">
@@ -702,6 +718,29 @@
           <string>ajouter</string>
          </property>
         </widget>
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>150</y>
+           <width>91</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ID departement</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_iddint_ajout">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>150</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_5">
@@ -809,6 +848,29 @@
          </property>
          <property name="text">
           <string>devis</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_idd_int_modif">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>120</y>
+           <width>113</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>120</y>
+           <width>101</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Id Departement</string>
          </property>
         </widget>
        </widget>
@@ -1116,6 +1178,22 @@
         <string>Id tech</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>40</y>
+        <width>381</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../IFACTORY.png</pixmap>
+      </property>
      </widget>
     </widget>
    </widget>

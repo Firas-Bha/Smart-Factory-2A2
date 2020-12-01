@@ -22,7 +22,39 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tableView_machine->setModel(tempmachine.afficher());
+    ui->lineEdit_idmachine->setValidator(new QIntValidator(0,999999999));
+
     ui->tableView_intervention->setModel(tempinterv.afficher());
+    ui->lineEdit_Idtech_ajout->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_iddepart->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_idmachine_2->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_Idtech_modif->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_idtech_recherche->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_codeinterv_ajout->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_codeinterv_modif->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_codeinterv_recherche->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_idmachine_5->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_departement_3->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_supprimer->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_interv_suppr->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_devis_ajout->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_devis_modif->setValidator(new QIntValidator(0,999999999));
+    ui->lineEdit_devis_recherche->setValidator(new QIntValidator(0,999999999));
+
+
+
+
+
+
+
+
+
+
+
+
+
+        son=new QSound("C:/Users/Sejir/Desktop/Gestion des Equipements/bro.wav");
 
 
 
@@ -35,7 +67,7 @@ MainWindow::~MainWindow()
 
 
 void MainWindow::on_pushButton_ajoutermach_clicked()
-{
+{son->play();
     int id=ui->lineEdit_idmachine->text().toInt();
     int idDepart=ui->lineEdit_iddepart->text().toInt();
     QString type=ui->lineEdit_type->text();
@@ -124,98 +156,101 @@ void MainWindow::on_pushButton_22_clicked()
 void MainWindow::on_pushButton_25_clicked()
 {
     QSqlDatabase db;
-                QTableView table_machine;
-                QSqlQueryModel * Modal=new  QSqlQueryModel();
+                        QTableView TableView_machine;
+                        QSqlQueryModel * Modal=new  QSqlQueryModel();
 
-                QSqlQuery qry;
-                 qry.prepare("SELECT * FROM machines ");
-                 qry.exec();
-                 Modal->setQuery(qry);
-                 table_machine.setModel(Modal);
-
-
-
-                 db.close();
+                        QSqlQuery qry;
+                         qry.prepare("SELECT * FROM MACHINES ");
+                         qry.exec();
+                         Modal->setQuery(qry);
+                         TableView_machine.setModel(Modal);
 
 
-                 QString strStream;
-                 QTextStream out(&strStream);
 
-                 const int rowCount =  table_machine.model()->rowCount();
-                 const int columnCount =   table_machine.model()->columnCount();
+                         db.close();
 
 
-                 const QString strTitle ="Document";
+                         QString strStream;
+                         QTextStream out(&strStream);
+
+                         const int rowCount = TableView_machine.model()->rowCount();
+                         const int columnCount =  TableView_machine.model()->columnCount();
 
 
-                 out <<  "<html>\n"
-                     "<head>\n"
-                         "<meta Content=\"Text/html; charset=Windows-1251\">\n"
-                     <<  QString("<title>%1</title>\n").arg(strTitle)
-                     <<  "</head>\n"
-                     "<body bgcolor=#ffffff link=#5000A0>\n"
-                    << QString("<h3 style=\" font-size: 32px; font-family: Arial, Helvetica, sans-serif; color: #FF9933; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des machines")
-                    <<"<br>"
-                     <<"<table border=1 cellspacing=0 cellpadding=2>\n";
+                         const QString strTitle ="Document";
 
-                 out << "<thead><tr bgcolor=#f0f0f0>";
-                 for (int column = 0; column < columnCount; column++)
-                     if (!table_machine.isColumnHidden(column))
-                         out << QString("<th>%1</th>").arg( table_machine.model()->headerData(column, Qt::Horizontal).toString());
-                 out << "</tr></thead>\n";
 
-                 for (int row = 0; row < rowCount; row++) {
-                     out << "<tr>";
-                     for (int column = 0; column < columnCount; column++) {
-                         if (! table_machine.isColumnHidden(column)) {
-                             QString data =  table_machine.model()->data( table_machine.model()->index(row, column)).toString().simplified();
-                             out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                         out <<  "<html>\n"
+                             "<head>\n"
+                                 "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                             <<  QString("<title>%1</title>\n").arg(strTitle)
+                             <<  "</head>\n"
+                             "<body bgcolor=#ffffff link=#5000A0>\n"
+                            << QString("<h3 style=\" font-size: 40px; font-family: Arial, Helvetica, sans-serif; color: #0894FD; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("Liste des Machines")
+                            <<"<br>"
+                             <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+
+                         out << "<thead><tr bgcolor=#f0f0f0>";
+                         for (int column = 0; column < columnCount; column++)
+                             if (!TableView_machine.isColumnHidden(column))
+                                 out << QString("<th>%1</th>").arg(TableView_machine.model()->headerData(column, Qt::Horizontal).toString());
+                         out << "</tr></thead>\n";
+
+                         for (int row = 0; row < rowCount; row++) {
+                             out << "<tr>";
+                             for (int column = 0; column < columnCount; column++) {
+                                 if (!TableView_machine.isColumnHidden(column)) {
+                                     QString data = TableView_machine.model()->data(TableView_machine.model()->index(row, column)).toString().simplified();
+                                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                 }
+                             }
+                             out << "</tr>\n";
                          }
-                     }
-                     out << "</tr>\n";
-                 }
-                 out <<  "</table>\n"
-                         "<br><br>"
-                         //<< QString("<p><img src=":/img/aze.png"; width="200"; height="200";\">%1</p>\n")
-                         <<"<br>"
-                         <<"<table border=1 cellspacing=0 cellpadding=2>\n";
-
-
-                     out << "<thead><tr bgcolor=#f0f0f0>";
-
                          out <<  "</table>\n"
+                                 "<br><br>"
 
-                     "</body>\n"
-                     "</html>\n";
+                                 "<p align='center'> <img src='C:/Users/Sejir/Desktop/IFACTORY.png' alt='IFACTORYlogo'></p>"
 
-                 QTextDocument *document = new QTextDocument();
-                 document->setHtml(strStream);
-
-                 QPrinter printer;
-                 QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
-                 if (dialog->exec() == QDialog::Accepted) {
-
-                     QLabel lab;
-                      QPixmap pixmap(":/img/aze.png");
-                     lab.setPixmap(pixmap);
-                     QPainter painter(&lab);
-                     //QPrinter printer(QPrinter::PrinterResolution);
-
-                     //pixmap.load("aze.png");
-                     //painter.drawPixmap(0,0,this->width(),this->height(),pixmap);
-                     //painter.drawPixmap(10,10,50,50, pixmap);
-
-                     document->print(&printer);
-                 }
-
-                 printer.setOutputFormat(QPrinter::PdfFormat);
-                 printer.setPaperSize(QPrinter::A4);
-                 printer.setOutputFileName("/tmp/machine.pdf");
-                 printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+                              <<"<br>"
+                                 <<"<table border=1 cellspacing=0 cellpadding=2 >\n";
 
 
+                             out << "<thead><tr bgcolor=#f0f0f0>";
 
-                 delete document;
+                                 out <<  "</table >\n"
+
+                             "</body>\n"
+
+                             "</html>\n";
+
+                         QTextDocument *document = new QTextDocument();
+                         document->setHtml(strStream);
+
+                         QPrinter printer;
+                         QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                         if (dialog->exec() == QDialog::Accepted) {
+
+                            QLabel lab;
+                              QPixmap pixmap("C:/Users/Sejir/Desktop/IFACTORY.png");
+                             lab.setPixmap(pixmap);
+                             QPainter painter(&lab);
+                             QPrinter printer(QPrinter::PrinterResolution);
+
+
+                             document->print(&printer);
+
+                         }
+
+                         printer.setOutputFormat(QPrinter::PdfFormat);
+                         printer.setPaperSize(QPrinter::A4);
+                         printer.setOutputFileName("/tmp/machine.pdf");
+                         printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                         delete document;
+
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -239,7 +274,10 @@ void MainWindow::on_pushButton_ajoutinterv_clicked()
     int idtech=ui->lineEdit_Idtech_ajout->text().toInt();
     QString date=ui->dateTimeEdit_ajout->text();
      int devis=ui->lineEdit_devis_ajout->text().toInt();
-     interventions i(code,idtech,date,devis);
+     int idDepart=ui->lineEdit_iddint_ajout->text().toInt();
+
+
+     interventions i(code,idtech,date,devis,idDepart);
      bool test=i.ajouter();
      if(test)
      { ui->tableView_intervention->setModel(tempinterv.afficher());
@@ -279,7 +317,9 @@ void MainWindow::on_pushButton_intervmidif_clicked()
     int idtech=ui->lineEdit_Idtech_modif->text().toInt();
     QString date=ui->dateTimeEdit_modif->text();
      int devis=ui->lineEdit_devis_modif->text().toInt();
-     interventions i(code,idtech,date,devis);
+     int idDepart=ui->lineEdit_idd_int_modif->text().toInt();
+
+     interventions i(code,idtech,date,devis,idDepart);
      bool test=i.modifier(code);
      if(test)
      { ui->tableView_intervention->setModel(tempinterv.afficher());
@@ -323,16 +363,18 @@ void MainWindow::on_pushButton_trier_interv_clicked()
           ui->tableView_intervention->setModel(tempinterv.trierdate());
        if(ui->radioButton_devis->isChecked())
           ui->tableView_intervention->setModel(tempinterv.trierdevis());
+       son->play();
 }
 
 void MainWindow::on_pushButton_clicked()
 {
-ui->tableView_machine->setModel(tempmachine.afficher());}
+ui->tableView_machine->setModel(tempmachine.afficher());
+son->play();}
 
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->tableView_intervention->setModel(tempinterv.afficher());
-
+son->play();
 }
 
 void MainWindow::on_tabWidget_10_currentChanged(int index)

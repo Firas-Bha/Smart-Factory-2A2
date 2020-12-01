@@ -9,11 +9,13 @@ class interventions
 public:
     interventions();
 
-    interventions(int,int,QString,int);
+    interventions(int,int,QString,int,int);
     int getcode(){return code;}
      int getididtech(){return idtech;}
       QString getdate(){return date;}
        int getdevis(){return devis;}
+      int getiddepart(){return idDepart;}
+
        bool ajouter();
         QSqlQueryModel * afficher();
         bool supprimer(int);
@@ -36,6 +38,7 @@ public:
     int idtech;
     QString date;
     int devis;
+    int idDepart;
 
 
 

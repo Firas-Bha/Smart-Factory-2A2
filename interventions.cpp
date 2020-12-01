@@ -11,13 +11,15 @@ interventions::interventions()
     idtech=0;
     date="";
     devis=0;
+    idDepart=0;
 }
-interventions::interventions(int i,int u,QString a,int b)
+interventions::interventions(int i,int u,QString a,int b,int x)
 {
 code=i;
 idtech=u;
 date=a;
 devis=b;
+idDepart=x;
 
 
 }
@@ -27,11 +29,13 @@ bool interventions::ajouter()
     QString codes= QString::number(code);
      QString id_tech= QString::number(idtech);
      QString devis_interv= QString::number(devis);
-query.prepare("INSERT INTO interventions(code_interv, id_tech, date_interv, devis)""VALUES(:code_interv , :id_tech , :date_interv , :devis)");
+      //QString Id_Depart= QString::number(IdDepart);
+query.prepare("INSERT INTO interventions(code_interv, id_tech, date_interv, devis)""VALUES(:code_interv , :id_tech , :date_interv , :devis )");
 query.bindValue(":code_interv",codes);
 query.bindValue(":id_tech",id_tech);
 query.bindValue(":date_interv",date);
 query.bindValue(":devis",devis_interv);
+//query.bindValue(":IdDepart",Id_Depart);
 return query.exec();
 }
 QSqlQueryModel * interventions::afficher()
@@ -42,6 +46,7 @@ model->setHeaderData(0,Qt::Horizontal,QObject::tr("code"));
 model->setHeaderData(1,Qt::Horizontal,QObject::tr("idtech"));
 model->setHeaderData(2,Qt::Horizontal,QObject::tr("date"));
 model->setHeaderData(3,Qt::Horizontal,QObject::tr("devis"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("Id_DEPART"));
 return model;
 
 }
@@ -62,6 +67,8 @@ bool interventions::modifier(int code)
     QString codes= QString::number(code);
      QString id_tech= QString::number(idtech);
      QString devis_interv= QString::number(devis);
+     //QString Id_Depart= QString::number(IdDepart);
+
       query.prepare("UPDATE interventions SET code_interv='"+codes+"',id_tech='"+id_tech+"',date_interv='"+date+"',devis='"+devis_interv+"' where code_interv='"+codes+"'");
 
 return query.exec();
