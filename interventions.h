@@ -14,7 +14,7 @@ public:
      int getididtech(){return idtech;}
       QString getdate(){return date;}
        int getdevis(){return devis;}
-      int getiddepart(){return idDepart;}
+      int getidmachine(){return idMachine;}
 
        bool ajouter();
         QSqlQueryModel * afficher();
@@ -38,7 +38,7 @@ public:
     int idtech;
     QString date;
     int devis;
-    int idDepart;
+    int idMachine;
 
 
 

@@ -274,10 +274,10 @@ void MainWindow::on_pushButton_ajoutinterv_clicked()
     int idtech=ui->lineEdit_Idtech_ajout->text().toInt();
     QString date=ui->dateTimeEdit_ajout->text();
      int devis=ui->lineEdit_devis_ajout->text().toInt();
-     int idDepart=ui->lineEdit_iddint_ajout->text().toInt();
+     int id_Machine=ui->lineEdit_iddint_ajout->text().toInt();
 
 
-     interventions i(code,idtech,date,devis,idDepart);
+     interventions i(code,idtech,date,devis,id_Machine);
      bool test=i.ajouter();
      if(test)
      { ui->tableView_intervention->setModel(tempinterv.afficher());
@@ -317,20 +317,20 @@ void MainWindow::on_pushButton_intervmidif_clicked()
     int idtech=ui->lineEdit_Idtech_modif->text().toInt();
     QString date=ui->dateTimeEdit_modif->text();
      int devis=ui->lineEdit_devis_modif->text().toInt();
-     int idDepart=ui->lineEdit_idd_int_modif->text().toInt();
+     int id_Machine=ui->lineEdit_idd_int_modif->text().toInt();
 
-     interventions i(code,idtech,date,devis,idDepart);
+     interventions i(code,idtech,date,devis,id_Machine);
      bool test=i.modifier(code);
      if(test)
      { ui->tableView_intervention->setModel(tempinterv.afficher());
-         QMessageBox::information(nullptr,QObject::tr("Ajout"),
-                                QObject::tr("Ajout avec succès!\n"
+         QMessageBox::information(nullptr,QObject::tr("MODIF"),
+                                QObject::tr("Modification avec succès!\n"
                                            "click ok to exit"),QMessageBox::Ok);
 
      }
      else
-     { QMessageBox::critical(nullptr,QObject::tr("Ajout"),
-                                QObject::tr("Ajout echoué!\n"
+     { QMessageBox::critical(nullptr,QObject::tr("Modif"),
+                                QObject::tr("Modification echoué!\n"
                                            "click ok to exit"),QMessageBox::Ok);
 
      }
