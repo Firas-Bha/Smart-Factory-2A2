@@ -36,6 +36,34 @@ bool Compte::supprimer(int account)
   return query.exec();
 
 }
+int Compte::check_compte(int account,QString password)
+{
+  QSqlQuery query;
+  QSqlQuery query2;
+  QString acc_ = QString::number(account);
+  query.prepare("select  username , mtp , permissions from compte  where username = :account_ and mtp=:password_ and permissions = 100 ");
+  query.bindValue(":account_",acc_);
+  query.bindValue(":password_",password);
+  if(query.exec())
+  {
+      if(query.next())
+      {
+         return 1;
+      }
+  }
+  query2.prepare("select  username , mtp  from compte  where username = :account_ and mtp=:password_  ");
+  query2.bindValue(":account_",acc_);
+  query2.bindValue(":password_",password);
+  if(query2.exec())
+  {
+      if(query2.next())
+      {
+         return 2;
+      }
+  }
+
+return 0;
+}
 
 QSqlQueryModel * Compte::combobox()
 {

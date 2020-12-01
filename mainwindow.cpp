@@ -8,9 +8,18 @@
 #include <QPainter>
 #include <QDesktopServices>
 #include <QUrl>
-
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTextStream>
+#include <QPainter>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QTextDocument>
+#include <QtPrintSupport/QPrinter>
+#include "qcustomplot.h"
 //
 using namespace std;
+
 void MainWindow::refreshw()
 {
     ui->tableView_compte->setModel(tempCompte.afficher());
@@ -27,13 +36,38 @@ void MainWindow::refreshw()
     ui->comboBox_mod_emp_username->setModel(tempCompte.combobox());
     ui->comboBox_mod_emp_cin->setModel(tempemp.combobox());
     ui->comboBox_supp_emp->setModel(tempemp.combobox());
+    ui->label_21->setText(generate_captcha(8));
 }
+QString MainWindow::generate_captcha(int n)
+{
+    time_t t;
+     srand((unsigned)time(&t));
+   QString chartab = "abcdefghijklmnopqrstuvwxyz0123456789";
+   QString captcha;
+   int x= 0 ;
+   while(n--)
+   {
+
+       captcha[x]=chartab[rand()% 36];
+       x++;
+   }
+
+   return captcha;
+
+}
+
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
 
     ui->setupUi(this);
+    ui->plot->addGraph();
+    ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
+    ui->plot->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui->label_21->setText("deglonnnnn");
     ui->lineEdit_cher_cin->setValidator(new QIntValidator(0,999999999));
     ui->lineEdit_cher_age->setValidator(new QIntValidator(0,111));
     ui->lineEdit_cher_id->setValidator(new QIntValidator(0,999999999));
@@ -61,7 +95,46 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    ui->stackedWidget ->setCurrentIndex(1);
+   int  username  = ui->lineEdit->text().toInt();
+   QString password = ui->lineEdit_2->text();
+   QString captcha_r = ui->label_21->text();
+   QString captcha_input = ui->lineEdit_3->text();
+   if (captcha_r != captcha_input)
+   {
+       QMessageBox::critical(nullptr, QObject::tr("login failled"),
+                   QObject::tr("verify your captcha please\n"
+                               ""), QMessageBox::Abort);
+       refreshw();
+
+   }
+   else
+   {
+   if(tempCompte.check_compte(username,password)==1)
+   {
+       QMessageBox::information(nullptr, QObject::tr("login  "),
+                   QObject::tr("welcome back admin ."), QMessageBox::Accepted);
+       ui->stackedWidget ->setCurrentIndex(1);
+   }
+   else
+   {
+       if(tempCompte.check_compte(username,password)==2)
+       {
+           QMessageBox::information(nullptr, QObject::tr("login  "),
+                       QObject::tr("welcome back employer ."), QMessageBox::Accepted);
+           ui->stackedWidget ->setCurrentIndex(1);
+       }
+       else
+       {
+           QMessageBox::critical(nullptr, QObject::tr("login failled"),
+                       QObject::tr("verify ur username and password.\n"
+                                   ""), QMessageBox::Abort);
+        }
+       refreshw();
+    }
+   }
+
+
+
 }
 
 void MainWindow::on_pushButton_28_clicked()
@@ -515,4 +588,66 @@ void MainWindow::on_pushButton_9_clicked()
             QMessageBox::critical(nullptr, QObject::tr("suprr refuser"),
                         QObject::tr("la supp de compte  est refusé.\n"
                                     "Clicker sur  Abort ."), QMessageBox::Abort);
+}
+
+void MainWindow::on_comboBox_mod_emp_cin_currentIndexChanged(int index)
+{
+    int cin = ui->comboBox_mod_emp_cin->currentText().toInt();
+   // int dep_index = tempemp.get_dep_index(cin);
+    //QString dep_index_ = QString::number(dep_index);
+
+    //ui->comboBox_mod_emp_dep->setCurrentIndex(dep_index);
+     QString cin_ = QString::number(cin);
+    QSqlQuery qry;
+    qry.prepare("select nom,prenom,age,salaire_j,nb_presence,username,idd from employer where cin = '"+cin_+"' " );
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->lineEdit_emp_mod_nom->setText(qry.value(0).toString());
+            ui->lineEdit_emp_mod_prenom->setText(qry.value(1).toString());
+            ui->lineEdit_emp_mod_age->setText(qry.value(2).toString());
+            ui->lineEdit_emp_mod_sal->setText(qry.value(3).toString());
+            ui->lineEdit_emp_mod_nbp->setText(qry.value(4).toString());
+        }
+
+    }
+}
+
+void MainWindow::on_comboBox_mod_dep_currentIndexChanged(int index)
+{
+    int idd = ui->comboBox_mod_dep->currentText().toInt();
+     QString idd_ = QString::number(idd);
+    QSqlQuery qry;
+    qry.prepare("select nom_dep from departement where idd = '"+idd_+"' " );
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->lineEdit_mod_nomdep->setText(qry.value(0).toString());
+
+        }
+
+    }
+}
+
+void MainWindow::on_comboBox_mod_compte_currentIndexChanged(int index)
+{
+    int username = ui->comboBox_mod_compte->currentText().toInt();
+     QString username_ = QString::number(username);
+    QSqlQuery qry;
+    qry.prepare("select mtp,permissions,email from compte where username = '"+username_+"' " );
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->lineEdit_mod_mtp->setText(qry.value(0).toString());
+            ui->lineEdit_mod_permissions->setText(qry.value(1).toString());
+            ui->lineEdit_mod_email->setText(qry.value(2).toString());
+
+
+
+        }
+
+    }
 }

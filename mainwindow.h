@@ -16,6 +16,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     void refreshw();
     ~MainWindow();
+    QString generate_captcha(int);
+
+
 
 
 private slots:
@@ -55,10 +58,17 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_comboBox_mod_emp_cin_currentIndexChanged(int index);
+
+    void on_comboBox_mod_dep_currentIndexChanged(int index);
+
+    void on_comboBox_mod_compte_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     Compte tempCompte;
     Departement tempdep;
     Employer tempemp;
+    QVector<double> qv_x, qv_y;
 };
 #endif // MAINWINDOW_H

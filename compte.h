@@ -15,7 +15,7 @@ public:
     int getUsername(){return usern;}
     QString getMtp(){return mtp;}
     QString getEmail(){return email;}
-
+    int check_compte(int,QString);
 
     bool ajouter_compte();
 

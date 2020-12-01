@@ -14,14 +14,16 @@ SOURCES += \
     departement.cpp \
     employer.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     compte.h \
     connection.h \
     departement.h \
     employer.h \
-    mainwindow.h
+    mainwindow.h \
+    qcustomplot.h
 
 FORMS += \
     mainwindow.ui

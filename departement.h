@@ -20,6 +20,8 @@ public:
     QSqlQueryModel * chercher_dep(int);
     QSqlQueryModel * chercher_dep(QString);
     QSqlQueryModel * chercher_dep(int,QString);
+    int get_dep_index(int cin);
+
 
 private:
     int idd;

@@ -25,6 +25,7 @@ public:
     QSqlQueryModel *  chercher_emp(int,QString,int);
 
     QSqlQueryModel *  chercher_emp(int,int,QString);
+    int get_dep_index(int cin);
 
 
 private:

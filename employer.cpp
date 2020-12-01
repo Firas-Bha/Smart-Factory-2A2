@@ -26,6 +26,30 @@ bool Employer::supp_emp(int cin)
   return query.exec();
 
 }
+int Employer::get_dep_index(int cin)
+{
+  QSqlQuery query;
+  QString cin_ = QString::number(cin);
+  //query.prepare("select nom_dep from employer where cin = '"+cin_+"'");
+
+   query.exec("select idd from employer where cin = '"+cin_+"'");
+   query.next();
+  QString idd = query.value(0).toString();
+   QSqlQuery query2;
+   query2.prepare("select  idd from departement ");
+   int i = 0 ;
+   while(query2.next())
+   {
+
+       if (query2.value(0).toString() == idd)
+           return i ;
+       else
+           i++;
+   }
+
+
+}
+
 
 bool Employer::modifier_emp()
 {
