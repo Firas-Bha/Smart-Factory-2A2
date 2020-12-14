@@ -2,8 +2,8 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
-#include "ui_mainwindow.h"
-#include "mainwindow.h"
+#include "ui_equipements.h"
+#include "equipements.h"
 
 
 machines::machines()

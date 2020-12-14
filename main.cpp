@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "equipements.h"
 #include <QApplication>
 #include <QMessageBox>
 #include <QtDebug>
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     connection C;
 
     bool test=C.createConnection();
-    MainWindow w;
+    equipements w;
     if (test)
         QMessageBox::information(nullptr,QObject::tr("database is open"),
                                  QObject::tr("connexion successful!\n"

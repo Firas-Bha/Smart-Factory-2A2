@@ -13,21 +13,21 @@ TARGET = test_son
 TEMPLATE = app
 SOURCES += \
     connection.cpp \
+    equipements.cpp \
     interventions.cpp \
     machines.cpp \
     main.cpp \
-    mainwindow.cpp \
     qcustomplot.cpp
 
 HEADERS += \
     connection.h \
+    equipements.h \
     interventions.h \
     machines.h \
-    mainwindow.h \
     qcustomplot.h
 
 FORMS += \
-    mainwindow.ui
+    equipements.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
