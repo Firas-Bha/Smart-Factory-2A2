@@ -3,7 +3,7 @@
 #include "produit.h"
 #include "stock.h"
 #include <QMainWindow>
-
+#include <QSound>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -45,10 +45,15 @@ private slots:
 
     void on_pushButton_12_clicked();
 
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_11_clicked();
+
 private:
     Ui::MainWindow *ui;
     Produit tempProduit;
     Stock tempStock;
+    QSound *sound;
 
 };
 #endif // MAINWINDOW_H

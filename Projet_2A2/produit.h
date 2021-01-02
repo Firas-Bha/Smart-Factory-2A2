@@ -17,9 +17,9 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier(int ,QString ,int ,QString);
-    QSqlQueryModel * chercher_ID(int);
+    QSqlQueryModel * chercher_ID(QString);
     QSqlQueryModel * chercher_Nom(QString);
-    QSqlQueryModel * chercher_Prix(int);
+    QSqlQueryModel * chercher_Prix(QString);
     QSqlQueryModel * trier_nom();
     QSqlQueryModel * trier_Prix();
     QSqlQueryModel *trier_ID();

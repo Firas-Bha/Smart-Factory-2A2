@@ -14,7 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">ackground-color:rgb(255, 255, 255)b</string>
+   <string notr="true">
+background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 255, 0, 69), stop:0.375 rgba(255, 255, 0, 69), stop:0.423533 rgba(251, 255, 0, 145), stop:0.45 rgba(247, 255, 0, 208), stop:0.477581 rgba(255, 244, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.55 rgba(255, 255, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(255, 255, 0, 69), stop:1 rgba(255, 255, 0, 69));</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
@@ -188,14 +189,14 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>680</x>
       <y>30</y>
       <width>481</width>
       <height>241</height>
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Gestion des Stocks</string>
     </property>
     <widget class="QLineEdit" name="lineEdit_idStock">
      <property name="geometry">
@@ -479,39 +480,39 @@
       <string>ID</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_IDRP">
+    <widget class="QLabel" name="label_IDR">
      <property name="geometry">
       <rect>
        <x>390</x>
        <y>40</y>
-       <width>95</width>
-       <height>20</height>
+       <width>55</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="text">
       <string>ID</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_NOMRP">
+    <widget class="QLabel" name="label_NOMR">
      <property name="geometry">
       <rect>
        <x>390</x>
        <y>70</y>
-       <width>95</width>
-       <height>20</height>
+       <width>55</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>NOM</string>
+      <string>Nom</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_PrixRP">
+    <widget class="QLabel" name="label_PrixR">
      <property name="geometry">
       <rect>
        <x>390</x>
        <y>100</y>
-       <width>95</width>
-       <height>20</height>
+       <width>55</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="text">
@@ -648,7 +649,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLabel" name="label_12">
+    <widget class="QLabel" name="label_IDstock">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -664,7 +665,7 @@
       <string>ID</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_13">
+    <widget class="QLabel" name="label_NOMstock">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -680,7 +681,7 @@
       <string>NOM</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="lineEdit_IDDD">
      <property name="geometry">
       <rect>
        <x>410</x>
@@ -693,7 +694,7 @@
       <string notr="true">background-color:rgb(85, 255, 255)</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="lineEdit_NOMMMM">
      <property name="geometry">
       <rect>
        <x>410</x>

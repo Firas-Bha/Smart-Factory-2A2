@@ -19,6 +19,8 @@ public:
     QSqlQueryModel*trier_NomAscendant();
     QSqlQueryModel *trier_NomDescendant();
     QSqlQueryModel *trier_IDSTOCK();
+    QSqlQueryModel*chercher_IDstock(QString);
+    QSqlQueryModel *chercher_Nomstock(QString );
 
 private:
 

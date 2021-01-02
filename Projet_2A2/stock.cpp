@@ -75,5 +75,33 @@ QSqlQueryModel * Stock::trier_IDSTOCK()
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("NomStock"));
     return model;
 }
+QSqlQueryModel * Stock::chercher_IDstock(QString txt)
+{
+
+QSqlQuery query;
+QSqlQueryModel * model1=new QSqlQueryModel();
+    model1->setQuery("select * from STOCK where Id LIKE '"+txt+"' " );
+    model1->setHeaderData(0,Qt::Horizontal,QObject::tr("Id"));
+    model1->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
+    model1->setHeaderData(2,Qt::Horizontal,QObject::tr("Prix"));
+    model1->setHeaderData(3,Qt::Horizontal,QObject::tr("Nom"));
+    model1->setHeaderData(4,Qt::Horizontal,QObject::tr("NomStock"));
+
+    return model1;
+
+}
+QSqlQueryModel * Stock::chercher_Nomstock(QString txt)
+{
+
+QSqlQuery query;
+QSqlQueryModel * model1=new QSqlQueryModel();
+    model1->setQuery("select * from STOCK where Nom LIKE '"+txt+"' " );
+    model1->setHeaderData(0,Qt::Horizontal,QObject::tr("Id"));
+    model1->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom Stock"));
+
+
+    return model1;
+
+}
 
 

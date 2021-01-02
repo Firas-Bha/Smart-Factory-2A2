@@ -57,15 +57,12 @@ bool Produit::modifier( int id_Produit,QString nom_Produit,int prix_Produit,QStr
     query.bindValue(":NomStock",NomStock);
     return  query.exec();
 }
-QSqlQueryModel * Produit::chercher_ID(int id)
+QSqlQueryModel * Produit::chercher_ID(QString txt)
 {
 
 QSqlQuery query;
 QSqlQueryModel * model1=new QSqlQueryModel();
-QString ids=QString::number(id);
-
-
-    model1->setQuery("select * from PRODUIT where Id LIKE '"+ids+"' " );
+    model1->setQuery("select * from PRODUIT where Id LIKE '"+txt+"' " );
     model1->setHeaderData(0,Qt::Horizontal,QObject::tr("Id"));
     model1->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
     model1->setHeaderData(2,Qt::Horizontal,QObject::tr("Prix"));
@@ -75,12 +72,12 @@ QString ids=QString::number(id);
     return model1;
 
 }
-QSqlQueryModel * Produit::chercher_Nom(QString nom)
+QSqlQueryModel * Produit::chercher_Nom(QString txt)
 {
 
 QSqlQuery query;
 QSqlQueryModel * model1=new QSqlQueryModel();
-    model1->setQuery("select * from PRODUIT where Nom LIKE '"+nom+"' " );
+    model1->setQuery("select * from PRODUIT where Nom LIKE '"+txt+"' " );
     model1->setHeaderData(0,Qt::Horizontal,QObject::tr("Id"));
     model1->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
     model1->setHeaderData(2,Qt::Horizontal,QObject::tr("Prix"));
@@ -90,15 +87,13 @@ QSqlQueryModel * model1=new QSqlQueryModel();
     return model1;
 
 }
-QSqlQueryModel * Produit::chercher_Prix(int prr)
+QSqlQueryModel * Produit::chercher_Prix(QString txt)
 {
 
 QSqlQuery query;
 QSqlQueryModel * model1=new QSqlQueryModel();
-QString prrs=QString::number(prr);
 
-
-    model1->setQuery("select * from PRODUIT where Prix LIKE '"+prrs+"' " );
+    model1->setQuery("select * from PRODUIT where Prix LIKE '"+txt+"' " );
     model1->setHeaderData(0,Qt::Horizontal,QObject::tr("Id"));
     model1->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
     model1->setHeaderData(2,Qt::Horizontal,QObject::tr("Prix"));
