@@ -1,4 +1,5 @@
 QT       += core gui sql printsupport
+QT       += core gui network
 CONFIG   += console
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
@@ -26,14 +27,16 @@ SOURCES += \
     commande.cpp \
     connection.cpp \
     main.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    stmp.cpp
 
 HEADERS += \
     ClientCo.h \
     client.h \
     commande.h \
     connection.h \
-    qcustomplot.h
+    qcustomplot.h \
+    stmp.h
 
 FORMS += \
     ClientCo.ui
