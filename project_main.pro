@@ -15,7 +15,8 @@ SOURCES += \
     employer.cpp \
     main.cpp \
     mainwindow.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    stmp.cpp
 
 HEADERS += \
     compte.h \
@@ -23,7 +24,8 @@ HEADERS += \
     departement.h \
     employer.h \
     mainwindow.h \
-    qcustomplot.h
+    qcustomplot.h \
+    stmp.h
 
 FORMS += \
     mainwindow.ui
@@ -32,3 +34,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    sound.qrc

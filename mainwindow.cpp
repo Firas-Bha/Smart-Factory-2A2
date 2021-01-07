@@ -1,9 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "compte.h"
-#include <QMessageBox>
+
 #include "employer.h"
 #include "departement.h"
+#include <QtPrintSupport/QPrinter>
+#include <QPainter>
+#include <QMessageBox>
 #include <QPdfWriter>
 #include <QPainter>
 #include <QDesktopServices>
@@ -11,11 +14,11 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextStream>
-#include <QPainter>
+
 #include <QTextStream>
 #include <QFileDialog>
 #include <QTextDocument>
-#include <QtPrintSupport/QPrinter>
+
 #include "qcustomplot.h"
 //
 using namespace std;
@@ -64,10 +67,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     ui->setupUi(this);
-    ui->plot->addGraph();
-    ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
-    ui->plot->graph(0)->setLineStyle(QCPGraph::lsNone);
-    ui->label_21->setText("deglonnnnn");
+    //ui->plot->addGraph();
+    //ui->plot->graph(0)->setScatterStyle(QCPScatterStyle::ssCircle);
+    //ui->plot->graph(0)->setLineStyle(QCPGraph::lsNone);
+
     ui->lineEdit_cher_cin->setValidator(new QIntValidator(0,999999999));
     ui->lineEdit_cher_age->setValidator(new QIntValidator(0,111));
     ui->lineEdit_cher_id->setValidator(new QIntValidator(0,999999999));
@@ -650,4 +653,33 @@ void MainWindow::on_comboBox_mod_compte_currentIndexChanged(int index)
         }
 
     }
+}
+
+void MainWindow::on_browse_clicked()
+{
+    files.clear();
+
+    QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+        files = dialog.selectedFiles();
+
+    QString fileListString;
+    foreach(QString file, files)
+        fileListString.append( """ + QFileInfo(file).fileName() + "" " );
+
+    ui->file_2->setText( fileListString );
+}
+
+void MainWindow::on_pushButton_18_clicked()
+{
+    Smtp* smtp = new Smtp("anouaramine.kassaa@esprit.tn",ui->mail_pass_2->text(), "smtp.gmail.com");
+      connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+
+      if( !files.isEmpty() )
+          smtp->sendMail("anouaramine.kassaa@esprit.tn", ui->rcpt_2->text() , ui->subject_2->text(),ui->msg_2->text(),files );
+      else
+          smtp->sendMail("anouaramine.kassaa@esprit.tn", ui->rcpt_2->text() , ui->subject_2->text(),ui->msg_2->text());
 }

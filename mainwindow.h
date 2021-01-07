@@ -1,9 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "compte.h"
+
 #include <QMainWindow>
+#include "compte.h"
 #include "departement.h"
 #include "employer.h"
+#include <QFileDialog>
+//#include <QSound>
+#include "stmp.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -64,11 +68,17 @@ private slots:
 
     void on_comboBox_mod_compte_currentIndexChanged(int index);
 
+    void on_browse_clicked();
+
+    void on_pushButton_18_clicked();
+
 private:
     Ui::MainWindow *ui;
     Compte tempCompte;
     Departement tempdep;
     Employer tempemp;
     QVector<double> qv_x, qv_y;
+    QStringList files;
+   // QSound *sound;
 };
 #endif // MAINWINDOW_H

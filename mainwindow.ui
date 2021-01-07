@@ -104,7 +104,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>190</x>
@@ -126,7 +126,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>190</x>
@@ -144,9 +144,23 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QTableView" name="tableView">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>30</y>
+         <width>256</width>
+         <height>81</height>
+        </rect>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -180,7 +194,7 @@
          <string notr="true">background-color: qconicalgradient(cx:0, cy:0, angle:135, stop:0 rgba(255, 255, 0, 69), stop:0.375 rgba(255, 255, 0, 69), stop:0.423533 rgba(251, 255, 0, 145), stop:0.45 rgba(247, 255, 0, 208), stop:0.477581 rgba(255, 244, 71, 130), stop:0.518717 rgba(255, 218, 71, 130), stop:0.55 rgba(255, 255, 0, 255), stop:0.57754 rgba(255, 203, 0, 130), stop:0.625 rgba(255, 255, 0, 69), stop:1 rgba(255, 255, 0, 69));</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_14">
          <attribute name="title">
@@ -369,7 +383,7 @@
            </rect>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_6">
            <attribute name="title">
@@ -571,6 +585,22 @@
               <height>201</height>
              </rect>
             </property>
+            <widget class="QLabel" name="label_43">
+             <property name="geometry">
+              <rect>
+               <x>56</x>
+               <y>22</y>
+               <width>271</width>
+               <height>161</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>../build-project_main-Desktop_Qt_5_9_9_MinGW_32bit-Debug/ifactory-logo.png</pixmap>
+             </property>
+            </widget>
            </widget>
           </widget>
           <widget class="QWidget" name="tab_7">
@@ -943,7 +973,7 @@
            </rect>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_9">
            <attribute name="title">
@@ -1352,7 +1382,7 @@
            </rect>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_20">
            <attribute name="title">
@@ -1605,6 +1635,155 @@
             </property>
            </widget>
           </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab_12">
+         <attribute name="title">
+          <string>email</string>
+         </attribute>
+         <widget class="QPushButton" name="pushButton_18">
+          <property name="geometry">
+           <rect>
+            <x>340</x>
+            <y>440</y>
+            <width>93</width>
+            <height>28</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Send</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="subject_2">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>90</y>
+            <width>201</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="browse">
+          <property name="geometry">
+           <rect>
+            <x>460</x>
+            <y>180</y>
+            <width>93</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>browse</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_109">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>320</y>
+            <width>55</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>message</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_93">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>30</y>
+            <width>55</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>recipient</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_108">
+          <property name="geometry">
+           <rect>
+            <x>470</x>
+            <y>30</y>
+            <width>55</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>mail pass</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="mail_pass_2">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>30</y>
+            <width>211</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="msg_2">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>230</y>
+            <width>571</width>
+            <height>201</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_107">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>180</y>
+            <width>111</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>attachement here</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="file_2">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>180</y>
+            <width>201</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="rcpt_2">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>30</y>
+            <width>201</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_104">
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>100</y>
+            <width>55</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>subject</string>
+          </property>
          </widget>
         </widget>
        </widget>
